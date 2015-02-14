@@ -27,7 +27,10 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_student_coach_bidirectional
-    assert false, "Test not implemented"
+    coach = User.new(0)
+    student = User.new(0)
+    coach.add_student( student )
+    assert_equal coach, student.coach, "The student should have a reference to its coach"
   end
 
   def test_infect_one_student
