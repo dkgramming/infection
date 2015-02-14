@@ -23,8 +23,11 @@ class UserTest < Test::Unit::TestCase
     coach.add_student( student1 )
     coach.add_student( student2 )
     coach.add_student( student3 )
-
     assert_equal 3, coach.students.length, "The coach should have exactly three student" 
+  end
+
+  def test_student_coach_bidirectional
+    assert false, "Test not implemented"
   end
 
   def test_infect_one_student
