@@ -1,10 +1,12 @@
 class User
   @site_version
-  @students = []
+  @students
   attr_accessor :site_version
+  attr_accessor :students
 
   def initialize (version)
     @site_version = version
+    @students = []
   end
 
   def add_student (student)
