@@ -14,6 +14,7 @@ class User
 
   def add_student (student)
     @students.push student
+    student.coach = self
   end
 
   def total_infection
