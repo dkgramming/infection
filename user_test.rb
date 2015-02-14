@@ -16,7 +16,15 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_add_many_students
-    assert false, "Test not implemented"
+    coach = User.new(0)
+    student1 = User.new(0)
+    student2 = User.new(0)
+    student3 = User.new(0)
+    coach.add_student( student1 )
+    coach.add_student( student2 )
+    coach.add_student( student3 )
+
+    assert_equal 3, coach.students.length, "The coach should have exactly three student" 
   end
 
   def test_infect_one_student
