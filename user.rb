@@ -3,5 +3,6 @@ class User
   @students
 
   def initialize ()
+    puts "New user created"
   end
 end
