@@ -10,7 +10,7 @@ class User
   end
 
   def add_student (student)
-
+    @students.push student
   end
 
   def total_infection
