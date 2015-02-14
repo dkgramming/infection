@@ -7,6 +7,10 @@ class User
     @site_version = version
   end
 
+  def add_student (student)
+
+  end
+
   def total_infection
     # Iterate over student array and infect them
   end
