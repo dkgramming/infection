@@ -19,5 +19,8 @@ class User
 
   def total_infection
     # Iterate over student array and infect them
+    @students.each do |student| 
+      student.site_version = self.site_version
+    end
   end
 end
