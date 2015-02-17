@@ -47,4 +47,26 @@ class UserTest < Test::Unit::TestCase
     assert_equal coach.site_version, student.site_version, 
       "The infection should have spread to the coach's student"
   end
+
+  def test_infect_many_students
+    coach = User.new(2)
+    student_1 = User.new(0)
+    student_2 = User.new(0)
+    student_3 = User.new(0)
+    coach.add_student( student_1 )
+    coach.add_student( student_2 )
+    coach.add_student( student_3 )
+
+    coach.students.each do |student|
+      assert_not_equal coach.site_version, student.site_version, 
+        "The coach should have a newer version of the site"
+    end
+
+    coach.total_infection()
+
+    coach.students.each do |student|
+      assert_equal coach.site_version, student.site_version, 
+        "The coach should have a newer version of the site"
+    end
+  end
 end
