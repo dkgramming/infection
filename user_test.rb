@@ -39,6 +39,9 @@ class UserTest < Test::Unit::TestCase
     student = User.new(0)
     coach.add_student( student )
 
+    assert_not_equal coach.site_version, student.site_version, 
+      "The coach should have a newer version of the site"
+
     coach.total_infection() 
 
     assert_equal coach.site_version, student.site_version, 
