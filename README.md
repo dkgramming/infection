@@ -1,4 +1,4 @@
-Infectionn
+Infection
 ===
 
 Dependencies
