@@ -86,4 +86,19 @@ class UserTest < Test::Unit::TestCase
     assert_equal coach.site_version, student.site_version,
       "The coach should have transitively infected the student"
   end
+
+  def test_student_infect_coach
+    coach = User.new(3)
+    student = User.new(4)
+    
+    coach.add_student( student )
+
+    assert_not_equal coach.site_version, student.site_version, 
+      "The student's site version should be higher than the coach's"
+
+    student.total_infection()
+
+    assert_equal coach.site_version, student.site_version,
+      "The student should have infected the coach with the newer site version"
+  end
 end
