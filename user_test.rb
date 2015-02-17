@@ -34,6 +34,14 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_infect_one_student
-    assert false, "Test not implemented"
+    # Put the coach three versions ahead of the student
+    coach = User.new(3)
+    student = User.new(0)
+    coach.add_student( student )
+
+    coach.total_infection() 
+
+    assert_equal coach.site_version, student.site_version, 
+      "The infection should have spread to the coach's student"
   end
 end
