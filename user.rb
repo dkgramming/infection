@@ -18,9 +18,11 @@ class User
   end
 
   def total_infection
-    # Iterate over student array and infect them
     @students.each do |student| 
       student.site_version = self.site_version
+
+      # Recursively infected students 
+      student.total_infection()
     end
   end
 end
