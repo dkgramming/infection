@@ -1,8 +1,4 @@
 class User
-  @site_version
-  @students
-  @coach
-  @infected
   attr_accessor :site_version
   attr_accessor :students
   attr_accessor :coach
