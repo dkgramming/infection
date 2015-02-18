@@ -118,4 +118,12 @@ class UserTest < Test::Unit::TestCase
     assert_equal student_a.site_version, student_b.site_version, 
       "Student A should have the same version of the site as Student B"
   end
+
+  def test_limited_infection_five
+    assert false, "Test not implemented"
+  end
+
+  def test_limited_infected_not_possible
+    assert false, "Test not implemented" 
+  end
 end
