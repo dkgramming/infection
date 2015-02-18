@@ -22,6 +22,8 @@ class User
 
   def total_infection
     if not @infected then
+      
+      # The infected flag is set to prevent infinite recursion
       @infected = true
 
       @students.each do |student| 
@@ -33,6 +35,7 @@ class User
 
       @coach.total_infection() unless @coach.nil?
 
+      # Cure the user so that he/she can receive future infections
       @infected = false
     end
   end
