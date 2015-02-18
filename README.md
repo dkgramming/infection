@@ -10,4 +10,4 @@ Usage
 Open a terminal and enter:
 
 * `cd infection`
-* `ruby user_test.rb`
+* `ruby infection_test.rb`
