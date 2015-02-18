@@ -101,4 +101,21 @@ class UserTest < Test::Unit::TestCase
     assert_equal coach.site_version, student.site_version,
       "The student should have infected the coach with the newer site version"
   end
+
+  def test_student_infect_coachs_student
+    coach_a = User.new(0)
+    student_a = User.new(4)
+    student_b = User.new(0)
+
+    coach_a.add_student( student_a )
+    coach_a.add_student( student_b )
+
+    assert_not_equal student_a.site_version, student_b.site_version, 
+      "Student A should have a newer version of the site"
+
+    student_a.total_infection()
+
+    assert_equal student_a.site_version, student_b.site_version, 
+      "Student A should have the same version of the site as Student B"
+  end
 end
