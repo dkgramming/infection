@@ -70,7 +70,7 @@ class UserTest < Test::Unit::TestCase
     end
   end
 
-  def test_infect_coach_of_coach
+  def test_infect_student_of_student
     coach = User.new(5)
     coach_student= User.new(3)
     student = User.new(2)
