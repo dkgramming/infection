@@ -1,4 +1,5 @@
 class Counter
+  attr_accessor :count
   
   def initialize( count )
     @count = count
