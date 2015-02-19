@@ -136,7 +136,7 @@ class UserTest < Test::Unit::TestCase
     coach_a.add_student( coach_c )
 
     # The counter allow Coach A to infect four other users, total of five
-    coach_a.limited_infection( Counter.new(4) )
+    coach_a.limited_infection( Counter.new(5) )
 
     assert_equal coach_a.site_version, coach_c.site_version,
       "Coach C should have been infected."
@@ -161,7 +161,7 @@ class UserTest < Test::Unit::TestCase
     coach.add_student( student )
 
     # Try to infect two other users
-    counter_remainder = coach.limited_infection( Counter.new(2) )
+    counter_remainder = coach.limited_infection( Counter.new(3) )
 
     assert_respond_to counter_remainder, :integer?, 
       "Limited infected should return an integer"
