@@ -31,6 +31,7 @@ class User
         student.total_infection()
       end
 
+      @coach.site_version = self.site_version unless @coach.nil?
       @coach.total_infection() unless @coach.nil?
 
       # Cure the user so that he/she can receive future infections
@@ -54,10 +55,12 @@ class User
         student.limited_infection( counter )
       end
       
+      @coach.site_version = self.site_version unless @coach.nil?
       @coach.limited_infection( counter ) unless @coach.nil?
 
       # Cure the user so that he/she can receive future infections
       @infected = false
     end
+    return counter.count
   end
 end
