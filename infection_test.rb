@@ -168,8 +168,6 @@ class UserTest < Test::Unit::TestCase
 
     assert_not_equal 0, counter_remainder, 
       "Counter should have a remainder since Coach tried to infect two users."
-
-    puts "Counter remainder: #{counter_remainder}"
   end
 
   def test_counter_zero
