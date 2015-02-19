@@ -48,15 +48,18 @@ class User
       # Signifies that another user has become infected
       counter.decrement!
 
-      @students.each do |student| 
-        student.site_version = self.site_version
+      # Ignore subsequent infections if a sufficient number have been infected
+      unless counter.zero?
+        @students.each do |student| 
+          student.site_version = self.site_version
 
-        # Recursively infected students 
-        student.limited_infection( counter )
+          # Recursively infected students 
+          student.limited_infection( counter )
+        end
+        
+        @coach.site_version = self.site_version unless @coach.nil?
+        @coach.limited_infection( counter ) unless @coach.nil?
       end
-      
-      @coach.site_version = self.site_version unless @coach.nil?
-      @coach.limited_infection( counter ) unless @coach.nil?
 
       # Cure the user so that he/she can receive future infections
       @infected = false
