@@ -120,7 +120,26 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_limited_infection_five
-    assert false, "Test not implemented"
+    coach_a = User.new(12)
+    coach_b = User.new(10)
+    coach_c = User.new(9)
+    student_a = User.new(5)
+    student_b = User.new(6)
+    student_c = User.new(4)
+
+    coach_b.add_student( student_a )
+    coach_b.add_student( student_b )
+
+    coach_c.add_student( student_c )
+
+    coach_a.add_student( coach_b )
+    coach_a.add_student( coach_c )
+
+    # The counter object will limit the infection to five users
+    coach_a.limited_infection( Counter.new(5) )
+
+    assert_not_equal coach_a.site_version, student_c.site_version,
+      "Coach A's infection should only spread to 5 users, student C is the sixth"
   end
 
   def test_limited_infected_not_possible
