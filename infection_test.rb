@@ -161,12 +161,32 @@ class UserTest < Test::Unit::TestCase
     coach.add_student( student )
 
     # Try to infect two other users
-    counter_remainder = coach.limited_infection( Counter.new(2) )
+    counter_remainder = coach.limited_infection( Counter.new(3) )
 
     assert_respond_to counter_remainder, :integer?, 
       "Limited infected should return an integer"
 
     assert_not_equal 0, counter_remainder, 
       "Counter should have a remainder since Coach tried to infect two users."
+
+    puts "Counter remainder: #{counter_remainder}"
+  end
+
+  def test_counter_zero
+    counter = Counter.new(0)
+    assert counter.zero?, 
+      "The counter should be zero since it was initialized to zero" 
+  end
+
+  def test_counter_zero_from_decrement
+    counter = Counter.new(5)
+
+    assert counter.count == 5, "The counter was initialized to five."
+
+    5.times do
+      counter.decrement!
+    end
+
+    assert counter.zero?, "The counter should have decremented to zero"
   end
 end
