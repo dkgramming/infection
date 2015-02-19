@@ -143,6 +143,18 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_limited_infected_not_possible
-    assert false, "Test not implemented" 
+    coach = User.new(23)
+    student = User.new(20)
+
+    coach.add_student( student )
+
+    # Try to infect two other users
+    counter_remainder = coach.limited_infection( Counter.new(2) )
+
+    assert_respond_to counter_remainder, :integer?, 
+      "Limited infected should return an integer"
+
+    assert_not_equal 0, counter_remainder, 
+      "Counter should have a remainder since Coach tried to infect two users and there is only one other."
   end
 end
