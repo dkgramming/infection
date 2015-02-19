@@ -155,6 +155,6 @@ class UserTest < Test::Unit::TestCase
       "Limited infected should return an integer"
 
     assert_not_equal 0, counter_remainder, 
-      "Counter should have a remainder since Coach tried to infect two users and there is only one other."
+      "Counter should have a remainder since Coach tried to infect two users."
   end
 end
