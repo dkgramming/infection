@@ -138,8 +138,20 @@ class UserTest < Test::Unit::TestCase
     # The counter allow Coach A to infect four other users, total of five
     coach_a.limited_infection( Counter.new(4) )
 
+    assert_equal coach_a.site_version, coach_c.site_version,
+      "Coach C should have been infected."
+
+    assert_equal coach_a.site_version, coach_b.site_version,
+      "Coach B should have been infected."
+      
+    assert_equal coach_a.site_version, student_b.site_version,
+      "Student B should have been infected."
+
+    assert_equal coach_a.site_version, student_a.site_version,
+      "Student A should have been infected."
+
     assert_not_equal coach_a.site_version, student_c.site_version,
-      "Coach A's infection should only spread to 5 users, student C is the sixth"
+      "Coach A's infection should only spread to 4 users, student C is the fifth"
   end
 
   def test_limited_infected_not_possible
