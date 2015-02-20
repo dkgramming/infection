@@ -39,7 +39,7 @@ class User
     end
   end
 
-  def limited_infection( counter )
+  def limited_infection( source_of_infection, counter )
     if not @infected and not counter.zero?
       
       # The infected flag is set to prevent infinite recursion
@@ -54,16 +54,21 @@ class User
           student.site_version = self.site_version
 
           # Recursively infected students 
-          student.limited_infection( counter )
+          student.limited_infection( source_of_infection, counter )
         end
         
         @coach.site_version = self.site_version unless @coach.nil?
-        @coach.limited_infection( counter ) unless @coach.nil?
+        @coach.limited_infection( source_of_infection, counter ) unless @coach.nil?
       end
 
       # Cure the user so that he/she can receive future infections
       @infected = false
+
+      # Determine if the algorithm has failed
+      if self == source_of_infection then
+        raise "Unable to infect requested number of users! #{counter.count}" unless counter.zero?
+      end
+
     end
-    return counter.count
   end
 end
